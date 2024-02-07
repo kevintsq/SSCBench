@@ -120,8 +120,6 @@ class MonoScene(pl.LightningModule):
         img = batch["img"]
         bs = len(img)
 
-        out = {}
-
         x_rgb = self.net_rgb(img)
 
         x3ds = []
@@ -131,19 +129,19 @@ class MonoScene(pl.LightningModule):
 
                 # project features at each 2D scale to target 3D scale
                 scale_2d = int(scale_2d)
-                projected_pix = batch["projected_pix_{}".format(self.project_scale)][i].cuda()
-                fov_mask = batch["fov_mask_{}".format(self.project_scale)][i].cuda()
+                projected_pix = batch[f"projected_pix_{self.project_scale}"][i].cuda()
+                fov_mask = batch[f"fov_mask_{self.project_scale}"][i].cuda()
 
                 # Sum all the 3D features
                 if x3d is None:
                     x3d = self.projects[str(scale_2d)](
-                        x_rgb["1_" + str(scale_2d)][i],
+                        x_rgb[f"1_{scale_2d}"][i],
                         projected_pix // scale_2d,
                         fov_mask,
                     )
                 else:
                     x3d += self.projects[str(scale_2d)](
-                        x_rgb["1_" + str(scale_2d)][i],
+                        x_rgb[f"1_{scale_2d}"][i],
                         projected_pix // scale_2d,
                         fov_mask,
                     )
@@ -296,7 +294,7 @@ class MonoScene(pl.LightningModule):
     def test_step(self, batch, batch_idx):
         self.step(batch, "test", self.test_metrics)
 
-    def test_epoch_end(self, outputs):
+    def on_test_epoch_end(self):
         classes = self.class_names
         metric_list = [("test", self.test_metrics)]
         for prefix, metric in metric_list:

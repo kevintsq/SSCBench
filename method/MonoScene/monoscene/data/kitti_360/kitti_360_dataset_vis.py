@@ -1,4 +1,3 @@
-import torch
 import os
 import glob
 from torch.utils.data import Dataset
@@ -120,6 +119,6 @@ class Kitti360Dataset(Dataset):
                 self.img_H,
                 self.scene_size,
             )
-            data["projected_pix_{}".format(scale_3d)] = projected_pix
-            data["fov_mask_{}".format(scale_3d)] = fov_mask
+            data[f"projected_pix_{scale_3d}"] = projected_pix
+            data[f"fov_mask_{scale_3d}"] = fov_mask
         return data

@@ -1,4 +1,3 @@
-from pytorch_lightning import Trainer
 from monoscene.models.monoscene import MonoScene
 from monoscene.data.NYU.nyu_dm import NYUDataModule
 from monoscene.data.semantic_kitti.kitti_dm import KittiDataModule

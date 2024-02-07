@@ -1,4 +1,3 @@
-from pytorch_lightning import Trainer
 from monoscene.models.monoscene import MonoScene
 from monoscene.data.NYU.nyu_dm import NYUDataModule
 from monoscene.data.semantic_kitti.kitti_dm import KittiDataModule
@@ -75,7 +74,7 @@ def main(config: DictConfig):
     print("Loading model from {}".format(model_path))
 
     model = MonoScene.load_from_checkpoint(
-        model_path,
+        r"/mnt/hdd_0/SSCBenchAssets/ckpts/monoscene_nuscenes_uni.ckpt",
         feature=feature,
         project_scale=project_scale,
         fp_loss=config.fp_loss,

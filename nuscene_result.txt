@@ -1,0 +1,20 @@
+test======
+Precision=60.6926, Recall=35.8938, IoU=29.1236
+class IoU: ['unlabeled', 'car', 'bicycle', 'motorcycle', 'person', 'road', 'sidewalk', 'other-ground', 'building', 'vegetation', 'other-object'],
+89.9506,  10.2183,  2.2753,  3.3715,  3.6100,  38.6665,  15.4266,  14.2606,  7.7815,  5.6778,  0.1075,
+mIoU=10.1395
+
+Precision=60.8472, Recall=36.3233, IoU=29.4420
+class IoU: ['unlabeled', 'car', 'bicycle', 'motorcycle', 'person', 'road', 'sidewalk', 'other-ground', 'building', 'vegetation', 'other-object'],
+90.0095,  10.4992,  1.5430,  4.4300,  3.5318,  39.0833,  15.3891,  14.3721,  8.0750,  5.6420,  0.0289,
+mIoU=10.2594
+Testing DataLoader 0: 100%|██████████| 2975/2975 [32:03<00:00,  1.55it/s]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+        Test metric               DataLoader 0
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         test/loss                     nan
+    test/loss_geo_scal         1.5600426197052002
+test/loss_relation_ce_super            nan
+    test/loss_sem_scal          7.096646308898926
+       test/loss_ssc           0.6575068831443787
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

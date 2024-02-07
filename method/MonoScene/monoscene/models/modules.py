@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 from monoscene.models.DDR import Bottleneck3D
 
@@ -107,8 +106,8 @@ class SegmentationHead(nn.Module):
 
 
 class ProcessKitti(nn.Module):
-    def __init__(self, feature, norm_layer, bn_momentum, dilations=[1, 2, 3]):
-        super(Process, self).__init__()
+    def __init__(self, feature, norm_layer, bn_momentum, dilations=(1, 2, 3)):
+        super().__init__()
         self.main = nn.Sequential(
             *[
                 Bottleneck3D(
@@ -127,8 +126,8 @@ class ProcessKitti(nn.Module):
 
 
 class Process(nn.Module):
-    def __init__(self, feature, norm_layer, bn_momentum, dilations=[1, 2, 3]):
-        super(Process, self).__init__()
+    def __init__(self, feature, norm_layer, bn_momentum, dilations=(1, 2, 3)):
+        super().__init__()
         self.main = nn.Sequential(
             *[
                 Bottleneck3D(
